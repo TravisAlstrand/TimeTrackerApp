@@ -1,0 +1,38 @@
+# Visual Studio / VS Code
+.vs/
+.vscode/
+
+# Build outputs
+bin/
+obj/
+
+# Mac/iOS/Mac Catalyst
+*.app
+*.ipa
+*.dsym
+*.dSYM.zip
+*.dylib
+*.framework
+
+# Android
+*.apk
+*.aab
+*.dex
+*.class
+*.keystore
+*.gradle/
+*.idea/
+
+# NuGet packages
+*.nupkg
+packages/
+.nuget/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+
+# Database
+*.db3

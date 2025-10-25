@@ -1,0 +1,18 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectTimeTracker.MainPage"
+             BackgroundColor="#FF545454">
+
+    <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+        
+        <Label Text="Project Time Tracker" FontSize="28" TextColor="#FFF2F2F2" HorizontalOptions="Center" />
+        
+        <Label x:Name="TimerLabel" Text="00:00:00" FontSize="24" TextColor="#FFF2F2F2" HorizontalOptions="Center" />
+        
+        <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+            <Button x:Name="StartButton" Text="Start" Clicked="OnStartClicked" />
+            <Button x:Name="StopButton" Text="Stop" Clicked="OnStopClicked" IsEnabled="False"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>
