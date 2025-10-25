@@ -1,7 +1,4 @@
-﻿using System;
-using System.Timers;
-using Microsoft.Maui.Controls;
-using ProjectTimeTracker.Services;
+﻿using ProjectTimeTracker.Services;
 using ProjectTimeTracker.ViewModels;
 
 namespace ProjectTimeTracker

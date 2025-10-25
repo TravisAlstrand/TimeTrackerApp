@@ -3,18 +3,30 @@
              x:Class="ProjectTimeTracker.MainPage"
              BackgroundColor="#FF545454">
 
-    <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
-      <Entry Placeholder="Project Name" x:Name="ProjectNameEntry" />
-      <HorizontalStackLayout Spacing="10">
-        <Button Text="Start" Clicked="StartButton_Clicked"/>
-        <Button Text="Stop" Clicked="StopButton_Clicked"/>
-      </HorizontalStackLayout>
-      <CollectionView ItemsSource="{Binding Sessions}">
-        <CollectionView.ItemTemplate>
-          <DataTemplate>
-            <Label Text="{Binding ProjectName}" />
-          </DataTemplate>
-        </CollectionView.ItemTemplate>
-      </CollectionView>
-    </VerticalStackLayout>
+  <VerticalStackLayout Padding="20"
+                       Spacing="15"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+    <Entry Placeholder="Project name"
+           x:Name="ProjectNameEntry"
+           WidthRequest="200"
+           HorizontalOptions="Center"
+           TextColor="Black"
+           BackgroundColor="White"/>
+    <HorizontalStackLayout Spacing="10"
+                           HorizontalOptions="Center">
+      <Button Text="Start"
+              Clicked="StartButton_Clicked"/>
+      <Button Text="Stop"
+              Clicked="StopButton_Clicked"/>
+    </HorizontalStackLayout>
+    <CollectionView ItemsSource="{Binding Sessions}"
+                    HorizontalOptions="Start">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <Label Text="{Binding ProjectName}"/>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </VerticalStackLayout>
 </ContentPage>
