@@ -1,57 +1,36 @@
 ﻿using System;
 using System.Timers;
 using Microsoft.Maui.Controls;
+using ProjectTimeTracker.Services;
+using ProjectTimeTracker.ViewModels;
 
 namespace ProjectTimeTracker
 {
   public partial class MainPage : ContentPage
   {
-    private DateTime _startTime;
-    private System.Timers.Timer? _timer;
-    private bool _isRunning = false;
+    private readonly TrackerViewModel _viewModel;
 
-    public MainPage()
+    public MainPage(SessionService sessionService)
     {
       InitializeComponent();
+      _viewModel = new TrackerViewModel(sessionService);
+      BindingContext = _viewModel;
     }
 
-    private void OnStartClicked(object sender, EventArgs e)
+    private void StartButton_Clicked(object sender, EventArgs e)
     {
-      if (!_isRunning)
-      {
-        _startTime = DateTime.Now;
-        _timer = new System.Timers.Timer(1000);
-        _timer.Elapsed += Timer_Elapsed;
-        _timer.Start();
-
-        _isRunning = true;
-        StartButton.IsEnabled = false;
-        StopButton.IsEnabled = true;
-      }
+      _viewModel.StartSession(ProjectNameEntry.Text);
     }
 
-    private void OnStopClicked(object sender, EventArgs e)
+    private async void StopButton_Clicked(object sender, EventArgs e)
     {
-      if (_isRunning)
-      {
-        _timer?.Stop();
-        _timer?.Dispose();
-        _isRunning = false;
-
-        StartButton.IsEnabled = true;
-        StopButton.IsEnabled = false;
-      }
+      await _viewModel.StopSessionAsync();
     }
 
-    private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
+    protected override async void OnAppearing()
     {
-      TimeSpan elapsed = DateTime.Now - _startTime;
-
-      // Update UI on main thread
-      MainThread.BeginInvokeOnMainThread(() =>
-      {
-        TimerLabel.Text = elapsed.ToString(@"hh\:mm\:ss");
-      });
+      base.OnAppearing();
+      await _viewModel.LoadSessionsAsync();
     }
   }
 }

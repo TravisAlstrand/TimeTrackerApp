@@ -4,15 +4,17 @@
              BackgroundColor="#FF545454">
 
     <VerticalStackLayout Padding="20" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
-        
-        <Label Text="Project Time Tracker" FontSize="28" TextColor="#FFF2F2F2" HorizontalOptions="Center" />
-        
-        <Label x:Name="TimerLabel" Text="00:00:00" FontSize="24" TextColor="#FFF2F2F2" HorizontalOptions="Center" />
-        
-        <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
-            <Button x:Name="StartButton" Text="Start" Clicked="OnStartClicked" />
-            <Button x:Name="StopButton" Text="Stop" Clicked="OnStopClicked" IsEnabled="False"/>
-        </HorizontalStackLayout>
-        
+      <Entry Placeholder="Project Name" x:Name="ProjectNameEntry" />
+      <HorizontalStackLayout Spacing="10">
+        <Button Text="Start" Clicked="StartButton_Clicked"/>
+        <Button Text="Stop" Clicked="StopButton_Clicked"/>
+      </HorizontalStackLayout>
+      <CollectionView ItemsSource="{Binding Sessions}">
+        <CollectionView.ItemTemplate>
+          <DataTemplate>
+            <Label Text="{Binding ProjectName}" />
+          </DataTemplate>
+        </CollectionView.ItemTemplate>
+      </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
